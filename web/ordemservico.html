@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Home Page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="js/jsutil.js"></script>
+        <script src="js/ordemdeservico.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <div id="divOrdemServico">
+            <a href="/index.html">Home</a>
+            <h1>Ordem de Serviço</h1>
+                <input type="hidden" id="id">
+                Evento: <input type="text" id="evento"><br/>
+                Time 1: <input type="text" id="time1"><br/>
+                Time 2: <input type="text" id="time2"><br/>
+                Classificação: <input type="text" id="classificacao"><br/>
+                Data: <input type="number" max="31" maxlength="2" id="dia">
+                    /<input type="number" max="12" maxlength="2" id="mes">
+                    /<input type="number" maxlength="4" id="ano"><br/>
+                Abertura dos Portoes: <input type="number" id="aberturaPortoesH">
+                    :<input type="number" id="aberturaPortoesM"><br/>
+                Abertura da Esplanada (Estacionamento): <input type="number" id="aberturaEsplanadaH">
+                    :<input type="number" id="aberturaEsplanadaM"><br/>
+                Inicio: <input type="number" id="inicioH">
+                    :<input type="number" id="inicioM"><br/>
+                Fim: <input type="number" id="fimH">
+                    :<input type="number" id="fimM"><br/>
+                Arquibancada Superior Norte: <input type="text" id="ordemServicoArquibancadaSuperiorNorte"><br/>
+                Arquibancada Inferior Norte: <input type="text" id="ordemServicoArquibancadaInferiorNorte"><br/>
+                Arquibancada Superior Sul: <input type="text" id="ordemServicoArquibancadaSuperiorSul"><br/>
+                Arquibancada Inferior Sul: <input type="text" id="ordemServicoArquibancadaInferiorSul"><br/>
+                Arquibancada Superior Oeste: <input type="text" id="ordemServicoArquibancadaSuperiorOeste"><br/>
+                Cadeiras Especiais Oeste:  <input type="text" id="ordemServicoCadeirasEspeciaisOeste"><br/>
+                Arquibancada Superior Leste: <input type="text" id="ordemServicoArquibancadaSuperiorLeste"><br/>
+                Cadeiras Especiais Leste: <input type="text" id="ordemServicoCadeirasEspeciaisLeste"><br/>
+                <input type="button" id="btnSalvar" value="Salvar"/><br/><br/>
+                <table id="tipoOrientadorTable">
+                </table>
+            </div>
+    </body>
+</html>
