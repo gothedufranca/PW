@@ -21,7 +21,7 @@ public class Data {
     public static Connection openConnection() throws Exception {
         Class.forName("com.mysql.jdbc.Driver").newInstance();
         return DriverManager.getConnection("jdbc:mysql://localhost:3306/pw?"
-                + "user=eduardo&password=");
+                + "user=root&password=");
     }
 
     public static void closeConnection(Connection con) throws SQLException {

@@ -10,9 +10,9 @@ import to.TOSetor;
 public class DAOSetor {
 	public static void inserir(Connection c, TOSetor setor) throws Exception{
 		StringBuilder query = new StringBuilder();
-		query.append(" insert into setor (");
+		query.append(" insert into setor ( ");
 		query.append(" nome) ");
-		query.append(" values(?, ?,)");
+		query.append(" values(?)");
 		Data.executeUpdate(c, query.toString(), setor.getNome());
 	}
 	public static void alterar(Connection c, TOSetor setor) throws Exception {
@@ -45,7 +45,6 @@ public class DAOSetor {
 		StringBuilder query = new StringBuilder();
 		query.append(" select id, nome ");
 		query.append(" from setor ");
-		query.append(" where nome like concat(concat('%', ?), '%') ");
 		query.append(" order by nome ");
 		List<TOSetor> lista = new ArrayList<>();
 		try (ResultSet rs = Data.executeQuery(c, query.toString())) {

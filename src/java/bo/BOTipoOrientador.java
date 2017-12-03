@@ -27,7 +27,12 @@ public class BOTipoOrientador {
 			return DAOTipoOrientador.obter(c, id);
 		}
 	}
-	public static List<TOTipoOrientador> lista(String filtro) throws Exception {
+	public static List<TOTipoOrientador> lista() throws Exception {
+		try(Connection c = Data.openConnection()){
+			return DAOTipoOrientador.lista(c);
+		}
+	}
+        public static List<TOTipoOrientador> lista(String filtro) throws Exception {
 		try(Connection c = Data.openConnection()){
 			return DAOTipoOrientador.lista(c, filtro);
 		}

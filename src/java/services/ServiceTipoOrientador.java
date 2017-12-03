@@ -6,8 +6,8 @@
 package services;
 
 
-
-import bo.BOOrdemDeServico;
+import bo.BOTipoOrientador;
+import to.TOTipoOrientador;
 import java.util.List;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -19,7 +19,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.PathParam;
-import to.TOOrdemDeServico;
 import to.TORetorno;
 
 
@@ -28,8 +27,8 @@ import to.TORetorno;
  *
  * @author usuario
  */
-@Path("os")
-public class ServiceOrdemDeServico {
+@Path("tipoorientador")
+public class ServiceTipoOrientador {
 
     @Context
     private UriInfo context;
@@ -37,34 +36,34 @@ public class ServiceOrdemDeServico {
     /**
      * Creates a new instance of ServiceUsuario
      */
-    public ServiceOrdemDeServico() {
+    public ServiceTipoOrientador() {
     }
     
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public TOOrdemDeServico salvar(TOOrdemDeServico ordemdeservico) throws Exception{
-        BOOrdemDeServico.inserir(ordemdeservico);
-        return ordemdeservico;
+    public TOTipoOrientador salvar(TOTipoOrientador tipoorientador) throws Exception{
+        BOTipoOrientador.inserir(tipoorientador);
+        return tipoorientador;
     }
     
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
-    public TOOrdemDeServico alterar(TOOrdemDeServico ordemdeservico) throws Exception {
-        BOOrdemDeServico.alterar(ordemdeservico);
-        return ordemdeservico;
+    public TOTipoOrientador alterar(TOTipoOrientador tipoorientador) throws Exception {
+        BOTipoOrientador.alterar(tipoorientador);
+        return tipoorientador;
     }
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<TOOrdemDeServico> obterOrdemDeServico() throws Exception{
-        return BOOrdemDeServico.lista();
+    public List<TOTipoOrientador> obterTipoOrientadores() throws Exception{
+        return BOTipoOrientador.lista();
     }
     
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public TOOrdemDeServico obterOrdemDeServico(@PathParam("id") int id) throws Exception{
-        return BOOrdemDeServico.obter(id);
+    public TOTipoOrientador obterFornecedores(@PathParam("id") int id) throws Exception{
+        return BOTipoOrientador.obter(id);
     }
     
     @DELETE
@@ -73,7 +72,7 @@ public class ServiceOrdemDeServico {
     public TORetorno excluir(@PathParam("id") int id) throws Exception {
         TORetorno r = new TORetorno();
         try {
-            BOOrdemDeServico.excluir(id);
+            BOTipoOrientador.excluir(id);
             r.setSucesso(true);
         } catch (Exception e) {
             r.setSucesso(false);

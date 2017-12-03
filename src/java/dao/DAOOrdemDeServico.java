@@ -82,8 +82,7 @@ public class DAOOrdemDeServico {
                 query.append(" arquibancadaSuperiorSul, arquibancadaInferiorSul, arquibancadaSuperiorOeste, ");
                 query.append(" cadeirasEspeciaisOeste, arquibancadaSuperiorLeste, cadeirasEspeciaisLeste ");
 		query.append(" from ordemdeservico ");
-		query.append(" where nome like concat(concat('%', ?), '%') ");
-		query.append(" order by nome ");
+		query.append(" order by dia, mes, ano, inicioh, iniciom ");
 		List<TOOrdemDeServico> lista = new ArrayList<>();
 		try (ResultSet rs = Data.executeQuery(c, query.toString())) {
             while (rs.next()) {
@@ -101,7 +100,7 @@ public class DAOOrdemDeServico {
                 query.append(" cadeirasEspeciaisOeste, arquibancadaSuperiorLeste, cadeirasEspeciaisLeste ");
 		query.append(" from ordemdeservico ");
 		query.append(" where nome like concat(concat('%', ?), '%') ");
-		query.append(" order by nome ");
+		query.append(" order by dia, mes, ano, inicioh, iniciom ");
 		List<TOOrdemDeServico> lista = new ArrayList<>();
 		try (ResultSet rs = Data.executeQuery(c, query.toString(), filtro)) {
             while (rs.next()) {

@@ -9,21 +9,19 @@ and open the template in the editor.
         <title>Home Page</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-        <script type="text/javascript" src="js/jsutil.js"></script>
-        <script type="text/javascript" src="js/campeonato.js"></script>
+        <script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
+        <script src="js/jsutil.js" type="text/javascript"></script>
+        <script src="js/setor.js" type="text/javascript"></script>
     </head>
     <body>
         <div id="divsetor">
             <a href="/index.html">Home</a>
             <h1>Setor</h1>
-                <form>
-                    <input type="hidden" id="id">
-                    Nome: <input type="text" id="nome"><br/>
-                    <input type="submit" value="Salvar"/><br/><br/>
-                    <table border= 1 id="tabela">
-                    </table>
-                </form>
-            </div>
+            <input type="hidden" id="id">
+            Nome: <input type="text" id="nome"><br/>
+            <input type="button" id="btnSalvar" value="Salvar"/><br/><br/>
+            <table border="1" id="tabela">
+            </table>
+        </div>
     </body>
 </html>

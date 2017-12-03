@@ -19,7 +19,7 @@ Index.prototype = {
         this.dataBind(
                 'GET',
                 '',
-                '/api/ordemdeservico',
+                '/api/os',
                 this._obterSuccess,
                 this._obterError);
     },
@@ -44,6 +44,7 @@ Index.prototype = {
         tabela += '<td><center>Cadeiras Especiais Oeste</center></td>';
         tabela += '<td><center>Arquibancada Superior Leste</center></td>';
         tabela += '<td><center>Cadeiras Especiais Leste</center></td>';
+        tabela += '<td><center>Ações</center></td>';
         tabela += '</tr>';
         $('#tabela').append(tabela);
         for (var i = 0; i < value.length; i++) {
@@ -59,6 +60,18 @@ Index.prototype = {
             tabela += '</center></td>';
             tabela += '<td><center>';
             tabela += value[i].time2;
+            tabela += '</center></td>';
+            tabela += '<td><center>';
+            tabela += value[i].classificacao;
+            tabela += '</center></td>';
+            tabela += '<td><center>';
+            tabela += value[i].dia + "/" + value[i].mes + "/" + value[i].ano;
+            tabela += '</center></td>';
+            tabela += '<td><center>';
+            tabela += value[i].inicioh + ":" + value[i].iniciom;
+            tabela += '</center></td>';
+            tabela += '<td><center>';
+            tabela += value[i].fimh + ":" + value[i].fimm;
             tabela += '</center></td>';
             tabela += '<td><center>';
             tabela += value[i].aberturaPortoesH + ":" + value[i].aberturaPortoesM;
@@ -109,35 +122,35 @@ Index.prototype = {
          this.dataBind(
                 'GET',
                 '',
-                '/api/ordemdeservico/' + value.data.id,
+                '/api/os/' + value.data.id,
                 this._alterarSuccess,
                 this._alterarError);
     },
     _alterarSuccess: function (value) {
             $('#id').val(value.id);
-            $('#nome').val(value.nome);
-            $("#evento").val(val.evento);
-            $("#time1").val(val.time1);
-            $("#time2").val(val.time2);
-            $("#dia").val(val.dia);
-            $("#mes").val(val.mes);
-            $("#ano").val(val.ano);
-            $("#inicioh").val(val.inicioh);
-            $("#iniciom").val(val.iniciom);
-            $("#fimh").val(val.fimh);
-            $("#fimm").val(val.fimm);
-            $("#aberturaPortoesH").val(val.aberturaPortoesH);
-            $("#aberturaPortoesM").val(val.aberturaPortoesM);
-            $("#aberturaEstacionamentoH").val(val.aberturaEstacionamentoH);
-            $("#aberturaEstacionamentoM").val(val.aberturaEstacionamentoM);
-            $("#arquibancadaSuperiorNorte").val(val.arquibancadaSuperiorNorte);
-            $("#arquibancadaInferiorNorte").val(val.arquibancadaInferiorNorte);
-            $("#arquibancadaSuperiorSul").val(val.arquibancadaSuperiorSul);
-            $("#arquibancadaInferiorSul").val(val.arquibancadaInferiorSul);
-            $("#arquibancadaSuperiorOeste").val(val.arquibancadaSuperiorOeste);
-            $("#cadeirasEspeciaisOeste").val(val.cadeirasEspeciaisOeste);
-            $("#arquibancadaSuperiorLeste").val(val.arquibancadaSuperiorLeste);
-            $("#cadeirasEspeciaisLeste").val(val.cadeirasEspeciaisLeste);
+            $("#evento").val(value.evento);
+            $("#time1").val(value.time1);
+            $("#time2").val(value.time2);
+            $("#classificacao").val(value.classificacao);
+            $("#dia").val(parseInt(value.dia));
+            $("#mes").val(parseInt(value.mes));
+            $("#ano").val(parseInt(value.ano));
+            $("#inicioh").val(parseInt(value.inicioh));
+            $("#iniciom").val(parseInt(value.iniciom));
+            $("#fimh").val(parseInt(value.fimh));
+            $("#fimm").val(parseInt(value.fimm));
+            $("#aberturaPortoesH").val(parseInt(value.aberturaPortoesH));
+            $("#aberturaPortoesM").val(parseInt(value.aberturaPortoesM));
+            $("#aberturaEstacionamentoH").val(parseInt(value.aberturaEstacionamentoH));
+            $("#aberturaEstacionamentoM").val(parseInt(value.aberturaEstacionamentoM));
+            $("#arquibancadaSuperiorNorte").val(parseInt(value.arquibancadaSuperiorNorte));
+            $("#arquibancadaInferiorNorte").val(parseInt(value.arquibancadaInferiorNorte));
+            $("#arquibancadaSuperiorSul").val(parseInt(value.arquibancadaSuperiorSul));
+            $("#arquibancadaInferiorSul").val(parseInt(value.arquibancadaInferiorSul));
+            $("#arquibancadaSuperiorOeste").val(parseInt(value.arquibancadaSuperiorOeste));
+            $("#cadeirasEspeciaisOeste").val(parseInt(value.cadeirasEspeciaisOeste));
+            $("#arquibancadaSuperiorLeste").val(parseInt(value.arquibancadaSuperiorLeste));
+            $("#cadeirasEspeciaisLeste").val(parseInt(value.cadeirasEspeciaisLeste));
     },
     _alterarError: function (value) {
         alert('Algo deu errado tentando alterar a Ordem de Serviço. Tente novamente.');
@@ -146,7 +159,7 @@ Index.prototype = {
             this.dataBind(
                 'DELETE',
                 '',
-                '/api/ordemdeservico/' + value.data.id,
+                '/api/os/' + value.data.id,
                 this._obter,
                 this._obterError);
     },
@@ -154,7 +167,29 @@ Index.prototype = {
 
         var data = {
             id: $('#id').val(),
-            nome: $('#nome').val()
+            evento: $("#evento").val(),
+            time1: $("#time1").val(),
+            time2: $("#time2").val(),
+            classificacao: $('#classificacao').val(),
+            dia: $("#dia").val(),
+            mes: $("#mes").val(),
+            ano: $("#ano").val(),
+            inicioh: $("#inicioh").val(),
+            iniciom: $("#iniciom").val(),
+            fimh: $("#fimh").val(),
+            fimm: $("#fimm").val(),
+            aberturaPortoesH: $("#aberturaPortoesH").val(),
+            aberturaPortoesM: $("#aberturaPortoesM").val(),
+            aberturaEstacionamentoH: $("#aberturaEstacionamentoH").val(),
+            aberturaEstacionamentoM: $("#aberturaEstacionamentoM").val(),
+            arquibancadaSuperiorNorte: $("#arquibancadaSuperiorNorte").val(),
+            arquibancadaInferiorNorte: $("#arquibancadaInferiorNorte").val(),
+            arquibancadaSuperiorSul: $("#arquibancadaSuperiorSul").val(),
+            arquibancadaInferiorSul: $("#arquibancadaInferiorSul").val(),
+            arquibancadaSuperiorOeste: $("#arquibancadaSuperiorOeste").val(),
+            cadeirasEspeciaisOeste: $("#cadeirasEspeciaisOeste").val(),
+            arquibancadaSuperiorLeste: $("#arquibancadaSuperiorLeste").val(),
+            cadeirasEspeciaisLeste: $("#cadeirasEspeciaisLeste").val()
         };
 
         // atenção que esta estrutura em javascript precisa respeitar a mesma estrutura
@@ -171,7 +206,7 @@ Index.prototype = {
             this.dataBind(
                     'POST',
                     datastr,
-                    '/api/ordemdeservico',
+                    '/api/os',
                     this._salvarSuccess,
                     this._salvarError);
 
@@ -180,7 +215,7 @@ Index.prototype = {
             this.dataBind(
                     'PUT',
                     datastr,
-                    '/api/ordemdeservico',
+                    '/api/os',
                     this._salvarSuccess,
                     this._salvarError);
 
@@ -189,8 +224,30 @@ Index.prototype = {
     },
     _salvarSuccess: function (value) {
 
-        $('#id').val('');
-        $('#nome').val('');
+        id: $('#id').val('');
+        evento: $("#evento").val('');
+        time1: $("#time1").val('');
+        time2: $("#time2").val('');
+        classificacao: $('#classificacao').val('');
+        dia: $("#dia").val('');
+        mes: $("#mes").val('');
+        ano: $("#ano").val('');
+        inicioh: $("#inicioh").val('');
+        iniciom: $("#iniciom").val('');
+        fimh: $("#fimh").val('');
+        fimm: $("#fimm").val('');
+        aberturaPortoesH: $("#aberturaPortoesH").val('');
+        aberturaPortoesM: $("#aberturaPortoesM").val('');
+        aberturaEstacionamentoH: $("#aberturaEstacionamentoH").val('');
+        aberturaEstacionamentoM: $("#aberturaEstacionamentoM").val('');
+        arquibancadaSuperiorNorte: $("#arquibancadaSuperiorNorte").val('');
+        arquibancadaInferiorNorte: $("#arquibancadaInferiorNorte").val('');
+        arquibancadaSuperiorSul: $("#arquibancadaSuperiorSul").val('');
+        arquibancadaInferiorSul: $("#arquibancadaInferiorSul").val('');
+        arquibancadaSuperiorOeste: $("#arquibancadaSuperiorOeste").val('');
+        cadeirasEspeciaisOeste: $("#cadeirasEspeciaisOeste").val('');
+        arquibancadaSuperiorLeste: $("#arquibancadaSuperiorLeste").val('');
+        cadeirasEspeciaisLeste: $("#cadeirasEspeciaisLeste").val('')
         alert('Ordem de Serviço salva com sucesso.');
         this._obter();
 

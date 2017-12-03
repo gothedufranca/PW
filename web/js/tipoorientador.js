@@ -18,7 +18,7 @@ Index.prototype = {
         this.dataBind(
                 'GET',
                 '',
-                '/api/setor',
+                '/api/tipoorientador',
                 this._obterSuccess,
                 this._obterError);
     },
@@ -36,7 +36,7 @@ Index.prototype = {
             tabela += value[i].id;
             tabela += '</center></td>';
             tabela += '<td><center>';
-            tabela += value[i].nome;
+            tabela += value[i].tipo;
             tabela += '</center></td>';
             tabela += '<td><input type="button" id="btnExcluir' + value[i].id + '" value="Excluir"/>';
             tabela += '<input type="button" id="btnAlterar' + value[i].id + '" value="Alterar"/></td>';
@@ -54,33 +54,33 @@ Index.prototype = {
          this.dataBind(
                 'GET',
                 '',
-                '/api/setor/' + value.data.id,
+                '/api/tipoorientador/' + value.data.id,
                 this._alterarSuccess,
                 this._alterarError);
     },
     _alterarSuccess: function (value) {
             $('#id').val(value.id);
-            $('#nome').val(value.nome);
+            $('#tipo').val(value.tipo);
     },
     _alterarError: function (value) {
-        alert('Algo deu errado tentando alterar o setor. Tente novamente.');
+        alert('Algo deu errado tentando alterar o tipo de orientador. Tente novamente.');
     },
     _excluir: function (value) {
             this.dataBind(
                 'DELETE',
                 '',
-                '/api/setor/' + value.data.id,
+                '/api/tipoorientador/' + value.data.id,
                 this._obter,
                 this._obterError);
     },
     _obterError: function () {
-        alert('Algo deu errado ao obter a lista de setores. Tente novamente.');
+        alert('Algo deu errado ao obter a lista de tipos de orientador. Tente novamente.');
     },
     _salvar: function () {
-
+        debugger;
         var data = {
             id: $('#id').val(),
-            nome: $('#nome').val()
+            tipo: $('#tipo').val()
         };
 
         // atenção que esta estrutura em javascript precisa respeitar a mesma estrutura
@@ -97,7 +97,7 @@ Index.prototype = {
             this.dataBind(
                     'POST',
                     datastr,
-                    '/api/setor',
+                    '/api/tipoorientador',
                     this._salvarSuccess,
                     this._salvarError);
 
@@ -106,7 +106,7 @@ Index.prototype = {
             this.dataBind(
                     'PUT',
                     datastr,
-                    '/api/setor',
+                    '/api/tipoorientador',
                     this._salvarSuccess,
                     this._salvarError);
 
@@ -116,14 +116,14 @@ Index.prototype = {
     _salvarSuccess: function (value) {
 
         $('#id').val('');
-        $('#nome').val('');
-        alert('Setor salvo com sucesso.');
+        $('#tipo').val('');
+        alert('Tipo de orientador salvo com sucesso.');
         this._obter();
 
     },
     _salvarError: function (value) {
 
-        alert('Erro ao salvar setor. Tente novamente.');
+        alert('Erro ao salvar tipo de orientador. Tente novamente.');
 
     },
     dataBind: function (type, data, url, success, error) {
