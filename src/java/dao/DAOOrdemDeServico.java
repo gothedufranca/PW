@@ -10,14 +10,13 @@ import to.TOOrdemDeServico;
 public class DAOOrdemDeServico {
 	public static void inserir(Connection c, TOOrdemDeServico os) throws Exception{
 		StringBuilder query = new StringBuilder();
-		query.append(" insert into ordemdeservico (");
+		query.append(" insert into ordemdeservico ( ");
 		query.append(" evento, time1, time2, classificacao, dia, mes, ano, inicioh, iniciom, fimh, ");
                 query.append(" fimm, aberturaPortoesH, aberturaPortoesM, aberturaEstacionamentoH, ");
                 query.append(" aberturaEstacionamentoM, arquibancadaSuperiorNorte, arquibancadaInferiorNorte, ");
                 query.append(" arquibancadaSuperiorSul, arquibancadaInferiorSul, arquibancadaSuperiorOeste, ");
                 query.append(" cadeirasEspeciaisOeste, arquibancadaSuperiorLeste, cadeirasEspeciaisLeste ");
-
-		query.append("values?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                query.append(" values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ) ");
 		Data.executeUpdate(c, query.toString(), os.getEvento(), os.getTime1(),
 				os.getTime2(), os.getClassificacao(), os.getDia(), os.getMes(),
                                 os.getAno(), os.getInicioh(), os.getIniciom(), os.getFimh(),
